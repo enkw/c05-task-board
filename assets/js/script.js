@@ -2,14 +2,67 @@
 let taskList = JSON.parse(localStorage.getItem("tasks"));
 let nextId = JSON.parse(localStorage.getItem("nextId"));
 
-// Todo: create a function to generate a unique task id
-function generateTaskId() {
+const time = dayjs();
+// This function is for checking localStorage for an existing task list (array), if none exist, this creates one
+function readTasksFromStorage() {
+    let tasks = JSON.parse(localStorage.getItem('task'));
 
+    if (!tasks) {
+        tasks = [];
+    }
+    return tasks;
+}
+// This function is for storing the task data to localStorage
+function saveTasksToStorage(tasks) {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+// Todo: create a function to generate a unique task id
+function generateTaskId(event) {
+    event.preventDefault();
+// Reads user input
+    const taskName = taskNameInputEl.val().trim();
+    const taskDescription = taskDescriptionInputEl.val().trim();
+    const taskDate = taskDateInputEl.val();
+
+    const newTask = {
+        name: taskName,
+        description: taskDescription,
+        dueDate: taskDate,
+        status: 'to-do',
+    };
+// Pulls tasks from localStorage and pushes the new task to the array
+    const tasks = readTasksFromStorage();
+    tasks.push(newTask);
+// Saves updated tasks array to localStorage
+    saveTasksToStorage(tasks);
+// Print tasks to the page
+    printTaskData();
+// Clears input values if needed
+    taskNameInputEl.val('');
+    taskDescriptionInputEl.val('');
+    taskDateInputEl.val('');
 }
 
 // Todo: create a function to create a task card
 function createTaskCard(task) {
+    const taskCard = $('<div>').addClass('card project-card draggable my-3').attr('data-task-id', task.id);
+    const cardHeader = $('<div>').addClass('card-header h4').text(task.name);
+    const cardBody = $('<div>').addClass('card-body');
+    const cardDescription = $('<p>').addClass('card-text').text(task.description);
+    const cardDueDate = $('<p>').addClass('card-text').text(task.dueDate);
+    const cardDeleteBtn = $('<button>').addClass('btn btn-danger delete').text('Delete').attr('data-project-id', task.id);
 
+  cardDeleteBtn.on('click', handleDeleteTask);
+
+  if (task.dueDate && task.status !== 'done') {
+    
+  }
+
+  cardBody.append(cardDescription, cardDueDate, cardDeleteBtn);
+  taskCard.append(cardHeader, cardBody);
+
+  return taskCard;
 }
 
 // Todo: create a function to render the task list and make cards draggable
