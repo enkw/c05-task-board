@@ -1,17 +1,13 @@
 # c05-task-board
 
-GIVEN a task board to manage a project
-WHEN I view the task board for the project
-THEN each task is color coded to indicate whether it is nearing the deadline (yellow) or is overdue (red)
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
+The goal of this was to fix the code provided so that the kanban board allows you to add a task by entering the task name, description, and due date. Once the task is added, the user is able to drag
+the task where they desire on the board, and delete said task once it's no longer needed. The tasks will change color as well based off of their due dates (Yellow for due that day, red for past due).
 
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
+I learned a lot about bootstrap and jQuery while working on this project, and feel like after this, though I might not fully understand all concepts I'm working with, I've gained a better understanding
+overall and have learned how to research and troubleshoot the issues I have with these better.
 
 ## Table of Contents (Optional)
 
@@ -23,23 +19,22 @@ N/A
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+Select the "Add Task" button to add a task to the board. Select the "Delete" button to remove the desired task.
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+Upon adding a task, you will be prompted to enter a task name, description, and due date.
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
 
-REMEMBER TO POST A LINK TO THE PROJECT
+![Screenshot of kanban board with tasks in "to do", "in progress", and "done"](./assets/screenshots/Screenshot-of-working-app.png)
+
+You can check this out [here]()!
 
 ## Credits
 
-List your collaborators, if any, with links to their GitHub profiles.
+Shouts out to the bootstrap 5.1.3 and jQuery documentation!
 
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
+Special thanks to Bryan Lebeuf for continuing to helping me learn and grow as a developer.
 
-If you followed tutorials, include links to those here as well.
+Shouts out to me, Ian Wolfe
 
 ## License
 
@@ -47,13 +42,13 @@ N/A
 
 ## Badges
 
-![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
-
 N/A
 
 ## Features
 
-If your project has a lot of features, list them here.
+Track your tasks with this kanban board!
+
+Tasks will appear yellow if they're due the day you're viewing the board, and red if the task is past due!
 
 ## How to Contribute
 
